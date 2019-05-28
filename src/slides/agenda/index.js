@@ -4,20 +4,18 @@ import { Slide } from 'presa';
 import { H4, H3 } from 'presa/blocks';
 
 const Agenda = (props) => {
-	const wrapperRef = React.useRef(null);
 	const canvasRef = React.useRef(null);
 
 	React.useEffect(() => {
-		const canvas =  canvasRef.current;
-		const wrapper = wrapperRef.current;
+		const canvas = canvasRef.current;
 		const ctx = canvas.getContext('2d');
-		const sizes = wrapper.getBoundingClientRect();
+		const sizes = canvas.getBoundingClientRect();
 
 		const radius = 40;
-		var x = radius;
-		var y = sizes.height / 2;
-		var vx = 0;
-		var ax;
+		let x = radius;
+		let y = sizes.height / 2;
+		let vx = 0;
+		let ax;
 		const spring = 0.003;
 		const targetX = sizes.width / 2;
 
@@ -54,19 +52,16 @@ const Agenda = (props) => {
 			<H4>talk&apos;s topic</H4>
 			<H3>Школьная математика вокруг нас</H3>
 
-			<CanvasWrapper innerRef={wrapperRef}>
-				<canvas ref={canvasRef}></canvas>
-			</CanvasWrapper>
+			<Canvas innerRef={canvasRef}></Canvas>
 		</Slide>
 	);
 };
 
-const CanvasWrapper = styled.div`
+const Canvas = styled.canvas`
 	width: 100%;
 	height: 100px;
 	max-width: 600px;
 	margin-top: 40px;
 `;
-
 
 export default Agenda;

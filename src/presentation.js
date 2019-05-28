@@ -15,6 +15,9 @@ import Agenda from './slides/agenda';
 import WhoAmI from './slides/who-am-i';
 import SystemCoordinates from './slides/system-coordinates';
 import CertesianSystem from './slides/cartesian-system';
+import RectFactoryDemo from './slides/rect-factory-demo';
+import MathMorth from './slides/math-morph';
+import PolarSystem from './slides/polar-system';
 
 const PitchDeck = () => (
 	<Presentation
@@ -82,6 +85,24 @@ const PitchDeck = () => (
 
 		<PlainSlide name="Polar Rose">
 			<img src="./images/polar-rose.png" style={{ height: '100%' }} alt="polar-rose"/>
+		</PlainSlide>
+
+		<RectFactoryDemo name="Rect factory demo"/>
+
+		<MathMorth name="Math morphing" />
+
+		<PolarSystem name='Polar system'/>
+
+		<PlainSlide name="Polygon">
+			<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>
+		</PlainSlide>
+
+		<PlainSlide name="Polar sytem image">
+			<img src="./images/polar-system.png" style={{ height: '100%' }} alt="heart"/>
+		</PlainSlide>
+
+		<PlainSlide name="polar to cartesian">
+			<img src="./images/polar-to-cartesian.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
 
 	</Presentation>
