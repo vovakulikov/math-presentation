@@ -13,9 +13,10 @@ const TYPES = {
 	circle: 5,
 };
 
-function generateRosePoints(r = 200, vertex = 360) {
+function generateRosePoints(radius = 200, vertex = 360) {
 	const k = 6;
 	const result = [];
+	const r = radius / 3;
 
 	for(let i = 0; i < vertex; i++) {
 		const angle = i*2*Math.PI/vertex;
@@ -27,13 +28,14 @@ function generateRosePoints(r = 200, vertex = 360) {
 		result.push({ x: x, y: y});
 	}
 
-	return result;
+	return { points: result, color: 'coral'};
 }
 
-function generateCannabisPoints(r = 200, vertex = 360) {
+function generateCannabisPoints(radius = 200, vertex = 360) {
 	const a = 0.5;
 	const result = [];
-	const translateY = 150;
+	const translateY = 16 * radius / 100;
+	const r = radius / 3;
 
 	for(let i = 0; i < vertex; i++) {
 		const angle = i * 2 * Math.PI/vertex;
@@ -44,27 +46,29 @@ function generateCannabisPoints(r = 200, vertex = 360) {
 		result.push({ x: x, y: y});
 	}
 
-	return result;
+	return { points: result, color: 'lightgreen' };
 }
 
 function generateCirclesPoints(radius = 150, vertex = 360) {
 	const result = [];
+	const r = radius / 3;
 
 	for(let i = 0; i < vertex; i++) {
 		const angle = i * 2 * Math.PI/vertex;
-		const x = radius * Math.sin(angle);
-		const y = radius * Math.cos(angle);
+		const x = r * Math.sin(angle);
+		const y = r * Math.cos(angle);
 
 		result.push({ x: x, y: y});
 	}
 
-	return result;
+	return { points: result, color: 'yellow' };
 }
 
-function generateAlmostHeartPoints(r = 250, vertex = 360,) {
+function generateAlmostHeartPoints(radius = 250, vertex = 360,) {
 	const points = [];
 	const a = 0.5;
-	const translateY = 125;
+	const translateY = 30;
+	const r = radius / 4;
 
 	for(let i = 0; i < vertex; i++) {
 		const angle = i*2*Math.PI/vertex;
@@ -75,26 +79,26 @@ function generateAlmostHeartPoints(r = 250, vertex = 360,) {
 		points.push({ x: x, y: y});
 	}
 
-	return points;
+	return { points: points, color: 'red' };
 }
 
 function generateHeartPoints(r = 75, vertex = 360,) {
 	const points = [];
-	const translateY = -100;
+	const translateY = -80;
 	const rotateAngle = Math.PI/2; // 90 deg
 
 	for (let i = 0; i < vertex; i++) {
 		let angle = i * 2 * Math.PI/vertex;
 		// More perfect here has more difficult shape
 		// 2 - 2 * Math.sin(angle) + Math.sin(angle) * (Math.sqrt(Math.abs(Math.cos(angle))) / (Math.sin(angle) + 1.4));
-		const radius = r * (3 - 2*Math.sin(angle) + Math.cos(2*angle) - 2 * Math.abs(Math.cos(angle)));
+		const radius = (r / 8) * (3 - 2*Math.sin(angle) + Math.cos(2*angle) - 2 * Math.abs(Math.cos(angle)));
 		const x = radius * Math.sin(angle - rotateAngle);
 		const y = translateY - radius * Math.cos(angle - rotateAngle);
 
 		points.push({ x: x, y: y});
 	}
 
-	return points;
+	return { points: points, color: 'red' };
 }
 
 function random(min, max) {
@@ -109,28 +113,39 @@ const GENERATORS = {
 	[TYPES.circle]: generateCirclesPoints
 };
 
+const { points, color } = GENERATORS[TYPES.circle]();
 const initialState = {
 	type: TYPES.circle,
-	targetShape: GENERATORS[TYPES.circle](),
-	currentShape: GENERATORS[TYPES.circle]()
+	targetShape: points,
+	currentShape: points,
+	color
 };
 
 const formulaRose = `{\\displaystyle \\mathbf {a} ={\\begin{bmatrix}-4\\\\3\\\\\\end{bmatrix}}=[-4\\ 3].}`;
+const demoBg = '#dfe5f3';
+
 const MathMorph = (props) => {
 	const canvasRef = React.useRef();
 	const [state, setState] = React.useState(() => initialState);
 
 	const setShape = (nextType) => {
 		const generator = GENERATORS[nextType];
+		const { points, color } = generator(canvasRef.current.width);
 
-		setState({ ...state, type: nextType, targetShape: generator() });
+		setState({
+			...state,
+			type: nextType,
+			targetShape: points,
+			color: color
+		});
 	};
+
 
 	React.useEffect(() => {
 		const canvas = canvasRef.current;
 		const sizes = canvas.getBoundingClientRect();
 
-		canvas.width = sizes.height;
+		canvas.width = sizes.width;
 		canvas.height = sizes.height;
 	});
 
@@ -144,10 +159,10 @@ const MathMorph = (props) => {
 			rafId = requestAnimationFrame(draw);
 
 			ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-			ctx.fillRect(0,0,canvas.width, canvas.height);
+			ctx.clearRect(0,0,canvas.width, canvas.height);
 
 			ctx.save();
-			ctx.fillStyle = 'black';
+			ctx.fillStyle = state.color;
 			ctx.lineWidth = 4;
 			ctx.translate(canvas.width/2, canvas.height/2);
 			ctx.beginPath();
@@ -179,19 +194,18 @@ const MathMorph = (props) => {
 	const { type: currentType } = state;
 
 	return (
-		<Slide {...props}>
+		<Slide {...props} layout={false}>
 			<MathJax.Provider>
-				<Content>
+				<Layout>
+					<Side>
+						<Buttons>
+							<Button checked={currentType === TYPES.heart} icon="❤️" onClick={() => setShape(TYPES.heart)}>Heart</Button>
+							<Button checked={currentType === TYPES.circle} icon="🔴️" onClick={() => setShape(TYPES.circle)}>Circle</Button>
+							<Button checked={currentType === TYPES.almostHeart} icon="💔" onClick={() => setShape(TYPES.almostHeart)}>Butt</Button>
+							<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>Cannabis</Button>
+							<Button checked={currentType === TYPES.rose} icon="🌹" onClick={() => setShape(TYPES.rose)}>Rose</Button>
+						</Buttons>
 
-					<Controls>
-						<Button checked={currentType === TYPES.heart} icon="❤️" onClick={() => setShape(TYPES.heart)}>Heart</Button>
-						<Button checked={currentType === TYPES.circle} icon="🔴️" onClick={() => setShape(TYPES.circle)}>Circle</Button>
-						<Button checked={currentType === TYPES.almostHeart} icon="💔" onClick={() => setShape(TYPES.almostHeart)}>Butt</Button>
-						<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>Cannabis</Button>
-						<Button checked={currentType === TYPES.rose} icon="🌹" onClick={() => setShape(TYPES.rose)}>Rose</Button>
-					</Controls>
-
-					<CanvasContainer>
 						<FormulaContainer>
 							{currentType === TYPES.circle && <Formula fontSize={50} formula={'{\\displaystyle r(\\varphi )=a}'}/>}
 							{currentType === TYPES.cannabis && <Formula fontSize={20} formula={'{\\displaystyle r(\\varphi )=(1+0.9 cos(8 θ)) (1+sin(θ))}'}/>}
@@ -199,24 +213,15 @@ const MathMorph = (props) => {
 							{currentType === TYPES.rose && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=a\\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
 							{currentType === TYPES.heart && <Formula fontSize={20} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>}
 						</FormulaContainer>
+					</Side>
+					<Demo>
 						<Canvas innerRef={canvasRef} />
-					</CanvasContainer>
-				</Content>
+					</Demo>
+				</Layout>
 			</MathJax.Provider>
 		</Slide>
 	);
 };
-
-const Controls = styled.div`
-	display: flex;
-	align-items: center;
-`;
-
-const CanvasContainer = styled.div`
-	flex: 1;
-	position: relative;
-	display: flex;
-`;
 
 const Formula = styled(MathJax.Node)`
 	display: flex;
@@ -225,21 +230,43 @@ const Formula = styled(MathJax.Node)`
 
 const FormulaContainer = styled.div`
 	flex: 1;
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-`;
-
-const Content = styled.div`
-	display: flex;
-	flex-direction: column;
-	height: 100%;
 `;
 
 const Canvas = styled.canvas`
 	flex: 1;
 	height: 100%;
 `;
+
+const Layout = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+`
+
+const Demo = styled.div`
+  width: 50%;
+  background: ${demoBg};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Side = styled.div`
+  width: 50%;
+  padding: 2em 2.5em;
+  
+  display: flex;
+  flex-direction: column;
+`
 
 export default MathMorph;

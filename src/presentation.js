@@ -18,6 +18,8 @@ import CertesianSystem from './slides/cartesian-system';
 import RectFactoryDemo from './slides/rect-factory-demo';
 import MathMorth from './slides/math-morph';
 import PolarSystem from './slides/polar-system';
+import PolarCodeDemoSlide from './slides/polar-system-code';
+import RafLoopSlide from './slides/raf-loop';
 
 const PitchDeck = () => (
 	<Presentation
@@ -104,6 +106,10 @@ const PitchDeck = () => (
 		<PlainSlide name="polar to cartesian">
 			<img src="./images/polar-to-cartesian.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
+
+		<PolarCodeDemoSlide name="Code demo polar shape"/>
+
+		<RafLoopSlide name="requestAnimationFrame game loop" centered />
 
 	</Presentation>
 );

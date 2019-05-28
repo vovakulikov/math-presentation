@@ -24,6 +24,7 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
+    "code-surfer": "^0.5.5",
     "polished": "^3.4.0",
     "presa": "^1.0.3",
     "react": "^16.8.6",

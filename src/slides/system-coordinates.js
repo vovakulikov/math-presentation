@@ -14,7 +14,7 @@ export default (props) => {
 		canvas.width = sizes.width;
 		canvas.height = sizes.height;
 
-		drawSystemOfCoordinates(canvas);
+		drawSystemOfCoordinates(canvas, 60);
 
 		return () => {}
 	}, []);
@@ -38,8 +38,8 @@ export default (props) => {
 
 function drawSystemOfCoordinates(canvas, step = 20) {
 	const ctx = canvas.getContext('2d');
-	const centerX =  Math.floor(((canvas.width / step) / 2)) * step;
-	const centerY = Math.floor(((canvas.height / step) / 2)) * step;
+	const centerX =  Math.floor((((canvas.width - 4) / step) / 2)) * step;
+	const centerY = Math.floor((((canvas.height - 4) / step) / 2)) * step;
 
 	ctx.save();
 	ctx.setLineDash([1, 3]);
@@ -82,6 +82,10 @@ function drawSystemOfCoordinates(canvas, step = 20) {
 
 	canvas_arrow(ctx, centerX, canvas.height, centerX, 0);
 	canvas_arrow(ctx,  0, centerY, canvas.width, centerY);
+
+	canvas_arrow(ctx,  centerX, centerY, centerX + step * 3, centerY + step * 3);
+	canvas_arrow(ctx,  centerX, centerY, centerX - step * 2, centerY - step * 3);
+	canvas_arrow(ctx,  centerX, centerY, centerX + step * 5, step * 2);
 }
 
 
@@ -106,7 +110,7 @@ const Showcase = styled.div`
   width: 100%;
   justify-content: center;
   transition: all 0.3s ease;
-  overflow: hidden;
+ 
   background-color: ${props => props.type === 'affine' ? '#3d59ff14' : 'inherit'};
   transform: ${props => props.type === 'affine' ? `rotate3d(2, -1, -1, -0.2turn) translateZ(50px) scale(3,3)` : '' };
 `;
