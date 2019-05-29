@@ -15,7 +15,7 @@ const CodeSlide = (props) => {
 						? lightMap[currentIndex].lines
 						: [];
 
-					const SubTitle = lightMap[currentIndex]
+					const SubTitle = lightMap[currentIndex] && lightMap[currentIndex].subTitle
 						? lightMap[currentIndex].subTitle
 						: EmptySubTitle;
 

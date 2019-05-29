@@ -4,6 +4,7 @@ import { Slide } from 'presa';
 import MathJax from 'react-mathjax';
 
 import Button from '../components/button';
+import Layout, { Buttons } from '../components/complex-demo-layout';
 
 const TYPES = {
 	rose: 1,
@@ -121,9 +122,6 @@ const initialState = {
 	color
 };
 
-const formulaRose = `{\\displaystyle \\mathbf {a} ={\\begin{bmatrix}-4\\\\3\\\\\\end{bmatrix}}=[-4\\ 3].}`;
-const demoBg = '#dfe5f3';
-
 const MathMorph = (props) => {
 	const canvasRef = React.useRef();
 	const [state, setState] = React.useState(() => initialState);
@@ -139,7 +137,6 @@ const MathMorph = (props) => {
 			color: color
 		});
 	};
-
 
 	React.useEffect(() => {
 		const canvas = canvasRef.current;
@@ -196,27 +193,22 @@ const MathMorph = (props) => {
 	return (
 		<Slide {...props} layout={false}>
 			<MathJax.Provider>
-				<Layout>
-					<Side>
-						<Buttons>
-							<Button checked={currentType === TYPES.heart} icon="❤️" onClick={() => setShape(TYPES.heart)}>Heart</Button>
-							<Button checked={currentType === TYPES.circle} icon="🔴️" onClick={() => setShape(TYPES.circle)}>Circle</Button>
-							<Button checked={currentType === TYPES.almostHeart} icon="💔" onClick={() => setShape(TYPES.almostHeart)}>Butt</Button>
-							<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>Cannabis</Button>
-							<Button checked={currentType === TYPES.rose} icon="🌹" onClick={() => setShape(TYPES.rose)}>Rose</Button>
-						</Buttons>
+				<Layout canvas={<Canvas innerRef={canvasRef} />}>
+					<Buttons>
+						<Button checked={currentType === TYPES.heart} icon="❤️" onClick={() => setShape(TYPES.heart)}>Heart</Button>
+						<Button checked={currentType === TYPES.circle} icon="🔴️" onClick={() => setShape(TYPES.circle)}>Circle</Button>
+						<Button checked={currentType === TYPES.almostHeart} icon="💔" onClick={() => setShape(TYPES.almostHeart)}>Butt</Button>
+						<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>Cannabis</Button>
+						<Button checked={currentType === TYPES.rose} icon="🌹" onClick={() => setShape(TYPES.rose)}>Rose</Button>
+					</Buttons>
 
-						<FormulaContainer>
-							{currentType === TYPES.circle && <Formula fontSize={50} formula={'{\\displaystyle r(\\varphi )=a}'}/>}
-							{currentType === TYPES.cannabis && <Formula fontSize={20} formula={'{\\displaystyle r(\\varphi )=(1+0.9 cos(8 θ)) (1+sin(θ))}'}/>}
-							{currentType === TYPES.almostHeart && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=1 - \\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
-							{currentType === TYPES.rose && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=a\\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
-							{currentType === TYPES.heart && <Formula fontSize={20} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>}
-						</FormulaContainer>
-					</Side>
-					<Demo>
-						<Canvas innerRef={canvasRef} />
-					</Demo>
+					<FormulaContainer>
+						{currentType === TYPES.circle && <Formula fontSize={50} formula={'{\\displaystyle r(\\varphi )=a}'}/>}
+						{currentType === TYPES.cannabis && <Formula fontSize={20} formula={'{\\displaystyle r(\\varphi )=(1+0.9 cos(8 θ)) (1+sin(θ))}'}/>}
+						{currentType === TYPES.almostHeart && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=1 - \\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
+						{currentType === TYPES.rose && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=a\\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
+						{currentType === TYPES.heart && <Formula fontSize={20} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>}
+					</FormulaContainer>
 				</Layout>
 			</MathJax.Provider>
 		</Slide>
@@ -225,7 +217,7 @@ const MathMorph = (props) => {
 
 const Formula = styled(MathJax.Node)`
 	display: flex;
-	font-size: ${props => props.fontSize && props.fontSize}px;
+	font-size: ${props => props.fontSize}px;
 `;
 
 const FormulaContainer = styled.div`
@@ -239,34 +231,5 @@ const Canvas = styled.canvas`
 	flex: 1;
 	height: 100%;
 `;
-
-const Layout = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-`
-
-const Buttons = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 28px;
-  flex-wrap: wrap;
-`
-
-const Demo = styled.div`
-  width: 50%;
-  background: ${demoBg};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Side = styled.div`
-  width: 50%;
-  padding: 2em 2.5em;
-  
-  display: flex;
-  flex-direction: column;
-`
 
 export default MathMorph;
