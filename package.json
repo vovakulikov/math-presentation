@@ -27,11 +27,14 @@
   },
   "dependencies": {
     "code-surfer": "^0.5.5",
+    "link": "^0.1.5",
+    "npm": "^6.9.0",
     "polished": "^3.4.0",
     "presa": "^1.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-mathjax": "^1.0.1",
+    "react-syntax-highlighter": "^10.3.0",
     "styled-components": "^2.4.1"
   }
 }

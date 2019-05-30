@@ -3,6 +3,10 @@ import { Slide } from 'presa';
 import { H2 } from 'presa/blocks';
 import styled from 'styled-components';
 
+function clamp(n, min, max) {
+	return Math.min(Math.max(n, min), max);
+};
+
 export default (props) => {
 	const canvasRef = React.useRef();
 	const [started, setStarted] = React.useState(false);
@@ -26,11 +30,15 @@ export default (props) => {
 
 		function lerp(t, a, b) { return a + t * (b - a); }
 
-		function draw() {
+		let lastTime = performance.now();
+		let duration = 2000;
+
+		function draw(time) {
+			let progress = clamp((time - lastTime) / duration, 0, 1);
 			rafId = requestAnimationFrame(draw);
 
 			if (started) {
-				x = lerp(0.01, x , canvas.width - radius);
+				x = lerp(progress, radius , canvas.width - radius);
 			}
 
 			ctx.fillStyle = 'rgba(255,255,255, 0.1)';
