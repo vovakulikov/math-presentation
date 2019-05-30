@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -42,14 +42,17 @@ module.exports = {
     ]
   },
 
+  optimization: {
+    minimizer: [new TerserPlugin()],
+  },
+
   plugins: isProduction
     ? [
         new webpack.DefinePlugin({
           'process.env': {
             NODE_ENV: JSON.stringify('production')
           }
-        }),
-        new UglifyJsPlugin()
+        })
       ]
     : [],
 
