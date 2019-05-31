@@ -47,8 +47,12 @@ const PitchDeck = () => (
 
 		<IntroSlide name='Intro'/>
 
-		<PlainSlide name="Example animation (Particles)" background="white">
-			<img src="./images/gifs/particles.gif" style={{height: "100%"}} alt="heart"/>
+        <PlainSlide name="Example animation (Webstirm)" background="black">
+            <img src="./images/gifs/webstorm.gif" style={{height: "100%"}} alt="heart"/>
+        </PlainSlide>
+
+		<PlainSlide name="Example animation (Particles)" background="black">
+			<img src="./images/gifs/bubble.gif" style={{height: "100%"}} alt="heart"/>
 		</PlainSlide>
 
 		<PlainSlide name="Example animation (Particles)" background="black">
@@ -175,7 +179,7 @@ const PitchDeck = () => (
 
 		<Slide name="Summa of vectors" centered>
 			<img src="./images/vector-sum.png" style={{ width: '800px', marginBottom: '40px' }} alt="summa of vectors"/>
-			<Code>{`const add = (...vx) => 
+			<Code>{`const add = (...vx) =>
   vx.reduce((a, v) => [a[0] + v[0], a[1] + v[1]], [0,0]);`}
 			</Code>
 		</Slide>

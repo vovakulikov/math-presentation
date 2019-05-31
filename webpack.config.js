@@ -59,6 +59,7 @@ module.exports = {
   devtool: isProduction ? false : 'source-map',
 
   devServer: {
+    port: 3000,
     contentBase: path.join(__dirname, 'public')
   }
 }
