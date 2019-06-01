@@ -7,17 +7,16 @@ export default (props) => (
 		<Code>
 		{`function lerp(t, a, b) { return a + t * (b - a); }
 
-function draw() {
-  rafId = requestAnimationFrame(draw);
-  
-  x = lerp(0.01, x , canvas.width - radius);
-  
-  ctx.clearRect(0,0, canvas.width, canvas.height);
-  
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, 2*Math.PI);
-  ctx.fill();
-}
+  let lastTime = performance.now();
+  let duration = 2000;
+
+  function draw(time) {
+   let progress = clamp((time - lastTime) / duration, 0, 1);
+ 
+   x = lerp(progress, radius , canvas.width - radius);
+
+   ctx.arc(x, y, radius, 0, 2*Math.PI);
+  }
 `}
 		</Code>
 	</Slide>

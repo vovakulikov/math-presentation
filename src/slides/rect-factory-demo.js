@@ -18,7 +18,7 @@ const generateRect = (width, height) => ({
 	as: 0,
 	spring: random(0.01, 0.03),
 	friction: random(0.9, 0.95),
-	color: `rgba(${random(0, 100)}, ${random(200, 255)}, ${random(250, 255)}, 1)`,
+	color: `rgba(${random(100, 255)}, ${random(100, 255)}, ${random(250, 255)}, ${random(0.7, 1)})`,
 });
 
 const RectFactory = (props) => {

@@ -9,12 +9,11 @@ export default (props) => (
 		<MathJax.Provider>
 			<H2>Второй закон ньютона</H2>
 			<Formula fontSize={30} formula={'m{\\vec  {a}}={\\vec  {F}}'}/>
+			<Formula fontSize={30} formula={'{\\vec  {a}}={\\vec  {F}}'}/>
 
 			<Code>
-				{`const applyForce = (particle, mass, force) => {
-  let { accel } = p;
-
-  return { ...p, accel: add(accel, scale(force, m)) };
+				{`const applyForce = (accel, mass, force) => {
+   return add(accel, scale(force, 1/m));
 };`}
 			</Code>
 		</MathJax.Provider>

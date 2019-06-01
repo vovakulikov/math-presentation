@@ -1,7 +1,7 @@
 import React from 'react';
+import darkTheme from "prism-react-renderer/themes/duotoneLight";
 import styled from 'styled-components';
 import CodeSurfer from 'code-surfer';
-import MathJax from "react-mathjax";
 
 const CustomCode = (props) => {
 	const { lines = [] } = props;
@@ -12,6 +12,7 @@ const CustomCode = (props) => {
 			<CodeSurfer
 				lang="javascript"
 				showNumbers
+				dark
 				code={props.code || ''}
 				step={step}
 			/>

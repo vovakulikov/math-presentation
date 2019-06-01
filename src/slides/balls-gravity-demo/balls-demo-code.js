@@ -32,14 +32,14 @@ function draw() {
 	 const { position, radius } = ball;
 	 const [x, y] = position;
 	 
-	 if (y + radius + this.dy> this.canvas.height) {
-		 ball.v = scale(mult(ball.v, vector(1, -1)), friction)
+	 if (y + radius > canvas.height) {
+		 ball.v = scale(rotate(ball.v, Math.PI), friction)
 	 } else {
-		 ball.v = addVector(ball.v, gravity);
+		 ball.v = add(ball.v, gravity);
 	 }
 	 
-	 if (this.x + this.radius >= this.canvas.width || this.x - this.radius <= 0) {
-		ball.v = scale(mult(ball.v, [-1, -1]), friction);
+	 if (this.x + radius >= canvas.width || x - radius <= 0) {
+		ball.v = scale(mult(ball.v, -1), friction);
 	 }
 
 	 ball.position = add(this.ball.position, ball.v)

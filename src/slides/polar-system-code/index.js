@@ -1,5 +1,4 @@
 import React from 'react';
-import { H3 } from 'presa/blocks';
 import CodeSlide from '../../components/code-slide';
 import MathJax from "react-mathjax";
 import styled from "styled-components";
@@ -17,7 +16,7 @@ const code = `function generateCannabisPoints(r = 200, vertex = 360) {
  	const x = radius * Math.sin(angle);
  	const y = radius * Math.cos(angle);
  
- 	result.push({ x: x, y: y});
+ 	result.push({ x: x, y: y });
  }
  
  return result;
@@ -30,14 +29,19 @@ const Formula = styled(MathJax.Node)`
 `;
 
 const highlightSettings = {
-	0: { lines: [2,3], subTitle:  () =>'Объявляем переменные'},
+	0: { lines: [2,3], subTitle:  () =>'Объявляем переменные, хранилище всех точек фигуры'},
 	1: { lines: [5,5], subTitle:  () =>'Обходим все точки'},
 	2: { lines: [6,6], subTitle:  () =>'Получаем значение угла для конкретной точке '},
 	3: { lines: [7, 8, 9], subTitle: () => (
+		<MathDesc>
+			<span style={{ marginRight: '20px' }}>Формула ❤️</span>
 			<MathJax.Provider>
 				<Formula fontSize={20} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>
 			</MathJax.Provider>
+		</MathDesc>
 		)},
+	4: { lines: [11,12], subTitle:  () =>'Переводим из полярной системы координат в декартову'},
+	5: { lines: [14], subTitle:  () =>'Сохраняем точку в сторе'},
 };
 
 const CodeDemo = (props) => {
@@ -45,7 +49,7 @@ const CodeDemo = (props) => {
 		<MathJax.Provider>
 			<CodeSlide
 				{...props}
-				title="Как нарисовать траву?"
+				title="Как нарисовать ❤️?"
 				code={code}
 				lightMap={highlightSettings}
 			/>
@@ -53,5 +57,9 @@ const CodeDemo = (props) => {
 	);
 };
 
+const MathDesc= styled.div`
+	display: flex;
+	align-items: center;
+`;
 
 export default CodeDemo;

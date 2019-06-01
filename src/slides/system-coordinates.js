@@ -84,7 +84,7 @@ function drawSystemOfCoordinates(canvas, step = 20) {
 	canvas_arrow(ctx,  0, centerY, canvas.width, centerY);
 
 	canvas_arrow(ctx,  centerX, centerY, centerX + step * 3, centerY + step * 3);
-	canvas_arrow(ctx,  centerX, centerY, centerX - step * 2, centerY - step * 3);
+	canvas_arrow(ctx,  centerX, centerY, centerX - step * 2, centerY - step * 2);
 	canvas_arrow(ctx,  centerX, centerY, centerX + step * 5, step * 2);
 }
 

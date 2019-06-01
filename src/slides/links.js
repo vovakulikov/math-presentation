@@ -9,9 +9,9 @@ const LinksSlide = () => (
 			<LinkIcon>👉 </LinkIcon>
 			<FinalLink
 				target="_blank"
-				href="https://github/vovakulikov/presa.git"
+				href="https://vovakulikov.github.io/math-preza/public"
 			>
-				About Math
+				vovakulikov.github.io/math-preza/public
 			</FinalLink>
 		</LinkWrap>
 		source code
@@ -19,9 +19,9 @@ const LinksSlide = () => (
 			<LinkIcon>⭐️ </LinkIcon>
 			<FinalLink
 				target="_blank"
-				href="https://github.com/vovakulikov/about-math"
+				href="https://github.com/vovakulikov/math-presa.git"
 			>
-				github.com/vovakulikov/about-math
+				github.com/vovakulikov/math-preza
 			</FinalLink>
 		</LinkWrap>
 		<Footer>

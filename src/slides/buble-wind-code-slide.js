@@ -44,9 +44,10 @@ const highlightSettings = {
 	3: { lines: gen(20,20) },
 	4: { lines: gen(3,12) },
 	5: { lines: gen(6,7) },
-	6: { lines: gen(9,9) },
-	7: { lines: gen(21,21) },
-  8: { lines: gen(22,22) },
+	6: { lines: gen(9,10) },
+	7: { lines: gen(12,12) },
+	8: { lines: gen(21,21) },
+  9: { lines: gen(22,22) },
 };
 
 export default (props) => {

@@ -8,7 +8,7 @@ const CodeSlide = (props) => {
 	const { lightMap = {} } = props;
 
 	return (
-		<Slide {...props} layout={false}>
+		<Slide {...props} layout={false} background="black">
 			<ControlledFragment numberOfSteps={Object.keys(lightMap).length}>
 				{(currentIndex) => {
 					const lines = lightMap[currentIndex]
@@ -21,13 +21,15 @@ const CodeSlide = (props) => {
 
 					return (
 						<CodeSlideContent>
-							{props.title && <H3>{props.title || ''}</H3>}
+							{props.title && <CodeH>{props.title || ''}</CodeH>}
 
 							<CustomCode
 								code={props.code}
 								lines={lines}/>
 
-							<SubTitle/>
+								<div style={{ color: 'white'}}>
+									<SubTitle/>
+								</div>
 							{/*{ subTitle && <p>{ <SubTitle/> }</p>}*/}
 						</CodeSlideContent>
 					)
@@ -40,6 +42,10 @@ const CodeSlide = (props) => {
 
 const EmptySubTitle = styled.p`
 	display: none;
+`;
+
+const CodeH = styled(H3)`
+	color: white;
 `;
 
 const CodeSlideContent = styled.div`

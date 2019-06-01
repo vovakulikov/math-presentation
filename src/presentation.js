@@ -22,6 +22,7 @@ import PolarCodeDemoSlide from './slides/polar-system-code';
 import RafLoopSlide from './slides/raf-loop';
 import AffineTransform from './slides/affine-transform';
 import AffineTransformBig from './slides/affine-transformation-demo';
+import PointMathView from './slides/point-math-view';
 import AffineMatrix from './slides/affine-matrix';
 import AffineComplexDemo from './slides/affine-complex-demo';
 import AffineComplexDemoCode from './slides/affine-transformation-demo/code-demo';
@@ -35,6 +36,9 @@ import BallsGravityDemoCode from './slides/balls-gravity-demo/balls-demo-code';
 import BublesWind from './slides/bubles-demo/bubles-wind';
 import SecondLaw from './slides/second-law-newton';
 import BubleWindCode from './slides/buble-wind-code-slide';
+import VelocityCode from './slides/velocity-code';
+import VectorOperations from './slides/list-vector-operations';
+import SimpleVelocity from './slides/simple-velocity';
 import Links from './slides/links';
 
 const PitchDeck = () => (
@@ -47,16 +51,16 @@ const PitchDeck = () => (
 
 		<IntroSlide name='Intro'/>
 
-        <PlainSlide name="Example animation (Webstirm)" background="black">
-            <img src="./images/gifs/webstorm.gif" style={{height: "100%"}} alt="heart"/>
-        </PlainSlide>
-
-		<PlainSlide name="Example animation (Particles)" background="black">
-			<img src="./images/gifs/bubble.gif" style={{height: "100%"}} alt="heart"/>
+		<PlainSlide name="Example animation (Webstorm)" background="black">
+				<img src="./images/gifs/webstorm.gif" style={{ height: "100%" }} alt="heart"/>
 		</PlainSlide>
 
 		<PlainSlide name="Example animation (Particles)" background="black">
-			<img src="./images/gifs/circle.gif" style={{height: "100%"}} alt="heart"/>
+			<img src="./images/gifs/bubble.gif" style={{ height: "100%" }} alt="heart"/>
+		</PlainSlide>
+
+		<PlainSlide name="Example animation (Particles)" background="black">
+			<img src="./images/gifs/circle.gif" style={{height: "100%" }} alt="heart"/>
 		</PlainSlide>
 
 		<PlainSlide name="Example animation (Heart)" background="black">
@@ -66,6 +70,8 @@ const PitchDeck = () => (
 		<PlainSlide name="Example animation (Rainbow)" background="black">
 			<img src="./images/gifs/rainbow.gif" alt="heart"/>
 		</PlainSlide>
+
+		<BublesWind name="Bubles Wind Demo"/>
 
 		<WhoAmI name="Who am i?" centered/>
 
@@ -123,6 +129,10 @@ const PitchDeck = () => (
 
 		<PolarSystem name='Polar system'/>
 
+		<PlainSlide name="polar to cartesian">
+			<img src="./images/polar-to-cartesian.png" style={{ height: '100%' }} alt="heart"/>
+		</PlainSlide>
+
 		<PlainSlide name="Polygon">
 			<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
@@ -131,17 +141,19 @@ const PitchDeck = () => (
 			<img src="./images/polar-system.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
 
-		<MathMorth name="Math morphing" />
-
 		<PlainSlide name="polar to cartesian">
-			<img src="./images/polar-to-cartesian.png" style={{ height: '100%' }} alt="heart"/>
+			<img src="./images/trigonometry-circle.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
+
+		<MathMorth name="Math morphing" />
 
 		<PolarCodeDemoSlide name="Code demo polar shape"/>
 
-		<AffineTransform name="Аффинные преобразования"></AffineTransform>
+		<AffineTransform name="Аффинные преобразования"/>
 
 		<AffineTransformBig name="Крупный план аффиного поворота"/>
+
+		<PointMathView name="Мат представление точки"/>
 
 		<AffineMatrix name="Аффинные матрицы"/>
 
@@ -163,7 +175,6 @@ const PitchDeck = () => (
 
 			</Numbered>
 		</Slide>
-
 
 		<VelocityDemo name="Линейная интерполяция"/>
 
@@ -196,23 +207,37 @@ const PitchDeck = () => (
 			<Code>{`const mag = ([x,y]) => Math.sqrt(x*x + y*y);`}</Code>
 		</Slide>
 
-		<BallsGravityDemo name="Balls gravity demo"/>
+		<VectorOperations name="Примеры операций над вектором"/>
 
-		<BallsGravityDemoCode name="Gravity Code" />
+		<SimpleVelocity name="Демо скорость"/>
+
+		<VelocityCode name="Пример скорости"/>
 
 		<PlainSlide background="#dedede" name="Newton">
-			<img src="./images/newton.jpg" style={{ height: '100%' }} alt="gantt-scroll"/>
+			<img src="./images/newton.jpg" style={{ height: '100%' }} alt="newton"/>
 		</PlainSlide>
 
 		<SecondLaw name="Second Law"/>
 
 		<Slide name="About velocity and accel" centered>
-			<H2>Ускорение действует на скорость, а скорость меняет позицию</H2>
+			<H2>Ускорение меняет скорость, а скорость меняет позицию</H2>
 		</Slide>
+
+		<BallsGravityDemo name="Balls gravity demo"/>
+
+		<BallsGravityDemoCode name="Gravity Code" />
 
 		<BublesWind name="Bubles Wind Demo"/>
 
 		<BubleWindCode name="Code Wind"/>
+
+		<PlainSlide name="polar to cartesian">
+			<img src="./images/nature-of-code.jpg" style={{ height: '100%' }} alt="book"/>
+		</PlainSlide>
+
+		<Slide name="Вывод" centered>
+			<H2>Не бойтесь математику,  дайте ей шанс и вы влюбитесь в нее ❤️</H2>
+		</Slide>
 
 		<Links name="Links"/>
 

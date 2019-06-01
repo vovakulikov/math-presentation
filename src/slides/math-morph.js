@@ -198,16 +198,16 @@ const MathMorph = (props) => {
 						<Button checked={currentType === TYPES.heart} icon="❤️" onClick={() => setShape(TYPES.heart)}>Heart</Button>
 						<Button checked={currentType === TYPES.circle} icon="🔴️" onClick={() => setShape(TYPES.circle)}>Circle</Button>
 						<Button checked={currentType === TYPES.almostHeart} icon="💔" onClick={() => setShape(TYPES.almostHeart)}>Butt</Button>
-						<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>Cannabis</Button>
+						<Button checked={currentType === TYPES.cannabis} icon="🌵" onClick={() => setShape(TYPES.cannabis)}>???</Button>
 						<Button checked={currentType === TYPES.rose} icon="🌹" onClick={() => setShape(TYPES.rose)}>Rose</Button>
 					</Buttons>
 
 					<FormulaContainer>
 						{currentType === TYPES.circle && <Formula fontSize={50} formula={'{\\displaystyle r(\\varphi )=a}'}/>}
-						{currentType === TYPES.cannabis && <Formula fontSize={20} formula={'{\\displaystyle r(\\varphi )=(1+0.9 cos(8 θ)) (1+sin(θ))}'}/>}
-						{currentType === TYPES.almostHeart && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=1 - \\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
-						{currentType === TYPES.rose && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=a\\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
-						{currentType === TYPES.heart && <Formula fontSize={20} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>}
+						{currentType === TYPES.cannabis && <Formula fontSize={25} formula={'{\\displaystyle r(\\varphi )=(1+0.9 cos(8 θ)) (1+sin(θ))}'}/>}
+						{currentType === TYPES.almostHeart && <Formula fontSize={38} formula={'{\\displaystyle r(\\varphi )=1 - \\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
+						{currentType === TYPES.rose && <Formula fontSize={38} formula={'{\\displaystyle r(\\varphi )=a\\cos \\left(k\\varphi +\\gamma _{0}\\right)}'}/>}
+						{currentType === TYPES.heart && <Formula fontSize={30} formula={'r = \\frac{\\sin t \\sqrt{|\\cos t|}}{\\sin t + \\frac75} - 2\\sin t + 2'}/>}
 					</FormulaContainer>
 				</Layout>
 			</MathJax.Provider>

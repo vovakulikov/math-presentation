@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slide } from 'presa';
-import { H2 } from 'presa/blocks';
-import styled from 'styled-components';
+import { H2, Code } from 'presa/blocks';
+import styled, { keyframes } from 'styled-components';
 
 function clamp(n, min, max) {
 	return Math.min(Math.max(n, min), max);
@@ -10,6 +10,7 @@ function clamp(n, min, max) {
 export default (props) => {
 	const canvasRef = React.useRef();
 	const [started, setStarted] = React.useState(false);
+	const [Vprogress, setProgress] = React.useState(0);
 
 	React.useEffect(() => {
 		const canvas = canvasRef.current;
@@ -39,6 +40,10 @@ export default (props) => {
 
 			if (started) {
 				x = lerp(progress, radius , canvas.width - radius);
+
+				if (progress.toFixed(2) !== Vprogress.toFixed(2)) {
+					setProgress(progress.toFixed(2));
+				}
 			}
 
 			ctx.fillStyle = 'rgba(255,255,255, 0.1)';
@@ -64,9 +69,11 @@ export default (props) => {
 			<p>Есть начальная точка a и конечная заданая точка b.
 				Уравнение преемещение может быть выражена через</p>
 
-			<InlineCode>const lerp = (t, a, b) => a + t * (b - a)</InlineCode>
+			<Code>{'const lerp = (t, a, b) => a + t * (b - a)'}</Code>
 
-			<p><InlineCode>t</InlineCode> просто какой то параметр (например 0.01)</p>
+			<p><InlineCode>t</InlineCode> - индикатор нашего прогресса (меняется от 0 до 1)</p>
+
+			<p>Изменение прогресса -> <HighBlockChange key={Vprogress}>{Vprogress}</HighBlockChange></p>
 
 			<Container>
 				<Canvas onClick={() => setStarted(true)} innerRef={canvasRef}/>
@@ -105,6 +112,25 @@ const Container = styled.div`
 		position: absolute;
 	}
 `;
+
+const hightLightAnimation = keyframes`
+  from {
+   background-color: yellow;
+  }
+
+  to {
+    background-color: lightgray;
+  }
+`;
+
+
+const HighBlockChange = styled.span`
+  animation-duration: 0.6s;
+  animation-name: ${hightLightAnimation};
+  animation-fill-mode: forwards;
+  padding: 7px 10px;
+`;
+
 
 const InlineCode = styled.code`
   letter-spacing: -0.5px;
