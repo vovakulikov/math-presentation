@@ -3,12 +3,12 @@ import CodeSlide from '../../components/code-slide';
 
 const code = `const balls = []
 const ball = () => ({
-	radius: randomIntFromRange(8, 20);
+	radius: random(8, 20);
 	position: [
-		randomIntFromRange(radius, canvas.width - radius),
-		randomIntFromRange(0, canvas.height - radius),
+		random(0, 500),
+		random(0, 500),
 	]
-	v: vector(randomIntFromRange(-3, 3),  randomIntFromRange(-2, 2))
+	v: vector(random(-3, 3),  random(-2, 2))
 });
 
 function init() {
@@ -29,20 +29,20 @@ function draw() {
 
  for (let i = 0; i < balls.length; i++) {
 	 const ball = balls[i];
-	 const { position, radius } = ball;
+	 const { position, radius, vel } = ball;
 	 const [x, y] = position;
 	 
 	 if (y + radius > canvas.height) {
-		 ball.v = scale(rotate(ball.v, Math.PI), friction)
+		 ball.v = scale(rotate(vel, Math.PI), friction)
 	 } else {
-		 ball.v = add(ball.v, gravity);
+		 ball.v = add(vel, gravity);
 	 }
 	 
 	 if (this.x + radius >= canvas.width || x - radius <= 0) {
-		ball.v = scale(mult(ball.v, -1), friction);
+		ball.v = scale(rotate(vel, Math.PI), friction);
 	 }
 
-	 ball.position = add(this.ball.position, ball.v)
+	 ball.position = add(position, ball.v)
 
 	 draw(ball);
  }
@@ -55,15 +55,16 @@ const highlightSettings = {
 	0: { lines: [1] },
 	1: { lines: gen(2, 9)},
 	2: { lines: gen(10, 16) },
-	3: { lines: gen(21, 45) },
-	4: { lines: gen(27,27) },
-	5: { lines: gen(28, 30) },
-	6: { lines: gen(31, 36) },
-	7: { lines: gen(33, 33) },
-	8: { lines: gen(35, 35) },
-	9: { lines: gen(39, 39) },
-	10: { lines: gen(42, 42) },
-	11: { lines: gen(44, 44) },
+	3: { lines: gen(20, 20) },
+	4: { lines: gen(21, 45) },
+	5: { lines: gen(27,27) },
+	6: { lines: gen(28, 30) },
+	7: { lines: gen(31, 36) },
+	8: { lines: gen(33, 33) },
+	9: { lines: gen(35, 35) },
+	10: { lines: gen(39, 39) },
+	11: { lines: gen(42, 42) },
+	12: { lines: gen(44, 44) },
 };
 
 export default (props) => {

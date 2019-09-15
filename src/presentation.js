@@ -53,7 +53,7 @@ const Description = styled.p`
 
 const PitchDeck = () => (
 	<Presentation
-		name="Tips and Tricks from school"
+		name="Про математику и геометрию"
 		tableOfContents
 		useFullscreenAPI
 		theme={{ textColor: baseTextColor }}
@@ -173,7 +173,7 @@ const PitchDeck = () => (
 
 		<Slide name="Radian" centered>
 			<H2>
-				В JavaScript нет углов, но есть <b>радианы</b>
+				В JavaScript нет градусов, но есть <b>радианы</b>
 			</H2>
 		</Slide>
 
@@ -185,13 +185,13 @@ const PitchDeck = () => (
 			<img src="./images/trig.png" style={{ height: '100%' }} alt="trigonometric circle"/>
 		</PlainSlide>
 
-		<PlainSlide name="Polygon">
-			<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>
-		</PlainSlide>
+		{/*<PlainSlide name="Polygon">*/}
+		{/*	<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>*/}
+		{/*</PlainSlide>*/}
 
-		<PlainSlide name="polar to cartesian">
-			<img src="./images/trigonometry-circle.png" style={{ height: '100%' }} alt="heart"/>
-		</PlainSlide>
+		{/*<PlainSlide name="polar to cartesian">*/}
+		{/*	<img src="./images/trigonometry-circle.png" style={{ height: '100%' }} alt="heart"/>*/}
+		{/*</PlainSlide>*/}
 
 		<MathMorth name="Math morphing" />
 
@@ -205,13 +205,13 @@ const PitchDeck = () => (
 
 		<AffineMatrix name="Аффинные матрицы"/>
 
+		<MatrixMult name="Умножение матриц"/>
+
 		<AffineComplexDemo name="Аффинный поворот демо"/>
 
 		<AffineComplexDemoCode name="Демо"/>
 
-		<MatrixMult name="Умножение матриц"/>
-
-		<MatrixMultCode name="Умножение матрицы алгоритм"/>
+		{/*<MatrixMultCode name="Умножение матрицы алгоритм"/>*/}
 
 		<Slide name="Chapter Two (Движение)">
 			<Numbered number={2} primaryColor={primaryColor}>

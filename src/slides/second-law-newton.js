@@ -12,9 +12,14 @@ export default (props) => (
 			<Formula fontSize={30} formula={'{\\vec  {a}}={\\vec  {F}}'}/>
 
 			<Code>
-				{`const applyForce = (accel, mass, force) => {
-   return add(accel, scale(force, 1/m));
-};`}
+				{`const applyForce = (a, m, force) => {
+   return add(a, div(force, m));
+};
+
+const simpleApplyForce = (a, force) => {
+   return add(a, force);
+}
+`}
 			</Code>
 		</MathJax.Provider>
 	</Slide>
