@@ -1,5 +1,5 @@
 
-#Полезные ссылки
+# Полезные ссылки
 
 1. Серия статей Нильсона Соута 
  - [An introduction to rigid body dynamics](http://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics)
