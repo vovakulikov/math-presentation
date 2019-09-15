@@ -77,9 +77,14 @@ const PitchDeck = () => (
 			<img src="./images/gifs/heart.gif" alt="heart"/>
 		</PlainSlide>
 
-		<PlainSlide name="Gantt" background="#f2f3f2">
+		<PlainSlide name="Cat" background="#f2f3f2">
 			<img src="./images/autism-cat.jpeg" style={{ height: '100%' }} alt="gantt"/>
 		</PlainSlide>
+
+		<PlainSlide name="Cat" background="#f2f3f2">
+			<img src="./images/dream.jpeg" style={{ height: '100%' }} alt="gantt"/>
+		</PlainSlide>
+
 
 		<WhoAmI name="Who am i?" centered/>
 
