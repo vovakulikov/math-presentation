@@ -37,9 +37,19 @@ import BublesWind from './slides/bubles-demo/bubles-wind';
 import SecondLaw from './slides/second-law-newton';
 import BubleWindCode from './slides/buble-wind-code-slide';
 import VelocityCode from './slides/velocity-code';
+import VelocityCodeWithFriction from './slides/velocity-code-with-friction';
+import VelocityCodeWithAcceleration from './slides/velocity-code-with-acceleration';
 import VectorOperations from './slides/list-vector-operations';
 import SimpleVelocity from './slides/simple-velocity';
 import Links from './slides/links';
+import CanvasAPI from './slides/canvas-api';
+import styled from "styled-components";
+
+const Description = styled.p`
+  margin: 40px 0;
+  text-align: left;
+  line-height: 1.5;
+`;
 
 const PitchDeck = () => (
 	<Presentation
@@ -67,11 +77,9 @@ const PitchDeck = () => (
 			<img src="./images/gifs/heart.gif" alt="heart"/>
 		</PlainSlide>
 
-		<PlainSlide name="Example animation (Rainbow)" background="black">
-			<img src="./images/gifs/rainbow.gif" alt="heart"/>
+		<PlainSlide name="Gantt" background="#f2f3f2">
+			<img src="./images/autism-cat.jpeg" style={{ height: '100%' }} alt="gantt"/>
 		</PlainSlide>
-
-		<BublesWind name="Bubles Wind Demo"/>
 
 		<WhoAmI name="Who am i?" centered/>
 
@@ -95,6 +103,30 @@ const PitchDeck = () => (
 		<PlainSlide name="Inertion scroll Gantt">
 			<img src="./images/gifs/gantt-scroll.gif" style={{ width: '100%' }} alt="gantt-scroll"/>
 		</PlainSlide>
+
+		<BublesWind name="Bubles Wind Demo"/>
+
+		<Slide name="How trains turn" centered>
+			<H2 style={{ 'margin-bottom': '50px'}}>Как поворачивают поезда?</H2>
+
+			<img src="./images/conus-2.jpg"/>
+		</Slide>
+
+		<Slide name="Trains" centered>
+			<img src="./images/train-1.jpg"/>
+		</Slide>
+
+		<Slide name="Trains 2" centered>
+			<img src="./images/train-2.jpg"/>
+		</Slide>
+
+		<Slide name="Trains 3" centered>
+			<img src="./images/train-3.jpg"/>
+		</Slide>
+
+		<Slide name="Real train" centered>
+			<img src="./images/real-train.jpg"/>
+		</Slide>
 
 		<Agenda name="Agenda" centered />
 
@@ -121,6 +153,8 @@ const PitchDeck = () => (
 
 		<RectFactoryDemo name="Rect factory demo"/>
 
+		<CanvasAPI  name='Canvas Api' />
+
 		<RafLoopSlide name="requestAnimationFrame game loop" centered />
 
 		<PlainSlide name="Polar Rose">
@@ -129,16 +163,30 @@ const PitchDeck = () => (
 
 		<PolarSystem name='Polar system'/>
 
+		<PlainSlide name="Polar sytem image">
+			<img src="./images/polar-system.png" style={{ height: '100%' }} alt="heart"/>
+		</PlainSlide>
+
 		<PlainSlide name="polar to cartesian">
 			<img src="./images/polar-to-cartesian.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
 
-		<PlainSlide name="Polygon">
-			<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>
+		<Slide name="Radian" centered>
+			<H2>
+				В JavaScript нет углов, но есть <b>радианы</b>
+			</H2>
+		</Slide>
+
+		<Slide name="Radian explain" centered>
+			<img src="./images/gifs/radians.gif" style={{ height: '100%' }} alt="radians"/>
+		</Slide>
+
+		<PlainSlide name="polar to cartesian">
+			<img src="./images/trig.png" style={{ height: '100%' }} alt="trigonometric circle"/>
 		</PlainSlide>
 
-		<PlainSlide name="Polar sytem image">
-			<img src="./images/polar-system.png" style={{ height: '100%' }} alt="heart"/>
+		<PlainSlide name="Polygon">
+			<img src="./images/polygon.png" style={{ height: '100%' }} alt="heart"/>
 		</PlainSlide>
 
 		<PlainSlide name="polar to cartesian">
@@ -213,15 +261,29 @@ const PitchDeck = () => (
 
 		<VelocityCode name="Пример скорости"/>
 
+		<SimpleVelocity friction={0.02} name="Демо скорость"/>
+
+		<VelocityCodeWithFriction name="Пример скорости c затуханием"/>
+
+		<SimpleVelocity accel={1} name="Демо скорость с ускорением"/>
+
+		<VelocityCodeWithAcceleration name="Пример кода скорости с ускорением" />
+
+		<Slide name="acceleration" centered>
+			<H3>
+				<b>Ускорение</b> является векторной величиной, показывающей, на сколько изменяется вектор скорости тела при его движении за единицу времени
+			</H3>
+		</Slide>
+
+		<Slide name="About velocity and accel" centered>
+			<H2>Ускорение меняет скорость, а скорость меняет позицию</H2>
+		</Slide>
+
 		<PlainSlide background="#dedede" name="Newton">
 			<img src="./images/newton.jpg" style={{ height: '100%' }} alt="newton"/>
 		</PlainSlide>
 
 		<SecondLaw name="Second Law"/>
-
-		<Slide name="About velocity and accel" centered>
-			<H2>Ускорение меняет скорость, а скорость меняет позицию</H2>
-		</Slide>
 
 		<BallsGravityDemo name="Balls gravity demo"/>
 
@@ -231,12 +293,25 @@ const PitchDeck = () => (
 
 		<BubleWindCode name="Code Wind"/>
 
+		<PlainSlide background="#dedede" name="cat coding">
+			<img src="./images/gifs/cat-coding.gif" style={{ height: '100%' }} alt="cat coding"/>
+		</PlainSlide>
+
+		<PlainSlide name="Genius">
+			<Porter>
+				<img src="./images/artix.jpg" style={{ height: '100%' }} alt="book"/>
+			</Porter>
+			<Porter>
+				<img src="./images/daniel.jpg" style={{ height: '100%' }} alt="book"/>
+			</Porter>
+		</PlainSlide>
+
 		<PlainSlide name="polar to cartesian">
 			<img src="./images/nature-of-code.jpg" style={{ height: '100%' }} alt="book"/>
 		</PlainSlide>
 
 		<Slide name="Вывод" centered>
-			<H2>Не бойтесь математику,  дайте ей шанс и вы влюбитесь в нее ❤️</H2>
+			<H2>Не бойтесь математику, дайте ей шанс и вы влюбитесь в нее ❤️</H2>
 		</Slide>
 
 		<Links name="Links"/>
@@ -244,6 +319,13 @@ const PitchDeck = () => (
 	</Presentation>
 );
 
+const Porter = styled.div`
+	width: 50%;
+	
+	& + & {
+		margin-left: 20px;
+	}
+`;
 
 
 export default PitchDeck;

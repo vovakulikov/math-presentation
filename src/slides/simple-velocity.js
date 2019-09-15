@@ -29,7 +29,10 @@ export default (props) => {
 
 		let rafId;
 
-		const vx = 10;
+		let vx = 10;
+		let accel = props.accel ? props.accel : 0;
+
+		const friction = props.friction ? props.friction : 0;
 
 		function draw(time) {
 			requestAnimationFrame(draw);
@@ -38,6 +41,7 @@ export default (props) => {
 				x = radius;
 			}
 
+			vx = (vx + accel) * (1 - friction);
 			x += vx;
 
 			ctx.clearRect(0,0, canvas.width, canvas.height);

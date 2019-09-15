@@ -34,12 +34,12 @@ const Intro = (props) => {
 	return (
 		<Slide {...props} background={backgroundGif}>
 			<DeckTitle color="black">
-				Tips and tricks from school ↝<br />Mathematics
+				Про геометрию↝<br />и математику
 			</DeckTitle>
 
 			<Contacts>
 				<Author>
-					Vova Kulikov<br />UWDC Chelyabinsk
+					Вова Куликов<br />404 Fest Самара
 				</Author>
 
 				<TwitterHandle>@_vovakulikov · wrike.com</TwitterHandle>

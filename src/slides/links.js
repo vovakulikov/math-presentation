@@ -4,14 +4,24 @@ import { Slide, BuiltWithPresa } from 'presa'
 
 const LinksSlide = () => (
 	<Slide name="Ссылка на презентацию">
+		my twitter
+		<LinkWrap>
+			<LinkIcon>👉 </LinkIcon>
+			<TweeterLink
+				target="_blank"
+				href="https://twitter.com/_vovakulikov"
+			>
+				twitter.com/_vovakulikov
+			</TweeterLink>
+		</LinkWrap>
 		link to the slides
 		<LinkWrap>
 			<LinkIcon>👉 </LinkIcon>
 			<FinalLink
 				target="_blank"
-				href="https://vovakulikov.github.io/math-preza/public"
+				href="http://bit.do/e8AFJ"
 			>
-				vovakulikov.github.io/math-preza/public
+				bit.do/e8AFJ
 			</FinalLink>
 		</LinkWrap>
 		source code
@@ -28,7 +38,7 @@ const LinksSlide = () => (
 			<BuiltWithPresa size={18} />
 		</Footer>
 	</Slide>
-)
+);
 
 export default LinksSlide
 
@@ -64,6 +74,20 @@ const FinalLink = styled.a`
   font-size: 32px;
   font-weight: 500;
   text-decoration: underline;
+  color: #333;
+  padding: 0 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #333;
+    color: white;
+  }
+`
+
+const TweeterLink = styled.a`
+  font-size: 32px;
+  font-weight: 500;
+  text-decoration: none;
   color: #333;
   padding: 0 8px;
   transition: all 0.2s ease;

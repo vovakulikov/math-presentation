@@ -13,7 +13,7 @@ module.exports = {
   },
 
   resolve: {
-    symlinks: false,
+    // symlinks: false,
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
 

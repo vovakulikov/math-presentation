@@ -7,15 +7,15 @@ export default (props) => (
 		<Code>
 		{`function lerp(t, a, b) { return a + t * (b - a); }
 
-  let lastTime = performance.now();
-  let duration = 2000;
+let lastTime = performance.now();
+let duration = 2000;
 
-  function draw(time) {
-   let progress = clamp((time - lastTime) / duration, 0, 1);
- 
-   x = lerp(progress, radius , canvas.width - radius);
+function draw(time) {
+let progress = clamp((time - lastTime) / duration, 0, 1);
 
-   ctx.arc(x, y, radius, 0, 2*Math.PI);
+x = lerp(progress, radius , canvas.width - radius);
+
+ctx.arc(x, y, radius, 0, 2*Math.PI);
   }
 `}
 		</Code>
